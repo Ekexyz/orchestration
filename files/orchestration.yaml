@@ -1,24 +1,21 @@
-tests:
-  - name: "Test1"
-    script: "tests1.robot"
-    browser: "chrome"
-    environment: "uat"
-    variables:
-      url: "https://example.com"
-
-  - name: "Test2"
-    script: "tests1.robot"
-    browser: "chrome"
-    environment: "uat"
-    variables:
-      url: "https://example.com"
-
-settings:
-  default_browser: "chrome"
-  report_path: "./test_reports"
-  log_level: "DEBUG"
-
 execute:
-  name:
-  status:
-  build:
+  build: 936018
+  name: null
+  status: null
+settings:
+  default_browser: chrome
+  log_level: DEBUG
+  report_path: ./test_reports
+tests:
+- browser: chrome
+  environment: uat
+  name: Test1
+  script: tests1.robot
+  variables:
+    url: https://example.com
+- browser: chrome
+  environment: uat
+  name: Test2
+  script: tests1.robot
+  variables:
+    url: https://example.com
