@@ -21,7 +21,7 @@ class GitOperations(object):
                 self._project_path = os.path.join(os.getcwd(), self._project_name)
 
         logger.console(self._project_path)
-        self._data_path = os.path.join(self._project_path, "data/")
+        self._data_path = os.path.join(self._project_path, "files/")
         logger.console(self._data_path)
 
     @keyword
