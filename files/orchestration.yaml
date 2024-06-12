@@ -13,9 +13,13 @@ tests:
   script: tests1.robot
   variables:
     url: https://example.com
+  precondition:
+    keyword: my kw to check if we can proceed
 - browser: chrome
   environment: uat
   name: Test2
   script: tests1.robot
   variables:
     url: https://example.com
+  precondition:
+    keyword: my kw to check if we can proceed
