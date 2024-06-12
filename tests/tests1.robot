@@ -10,29 +10,14 @@ Test1
     [Documentation]
     [Tags]
     Log    Starting ${TEST NAME}  console=True
+    Pass Execution  message=${TEST NAME} finished
 
 Test2
     [Documentation]
     [Tags]
     Log    Starting ${TEST NAME}  console=True
+    Pass Execution  message=${TEST NAME} finished
 
-
-Test3
-    [Documentation]
-    [Tags]
-    Log    Starting ${TEST NAME}  console=True
-
-
-Test4
-    [Documentation]
-    [Tags]
-    Log    Starting ${TEST NAME}  console=True
-
-
-Test5
-    [Documentation]
-    [Tags]
-    Log    Starting ${TEST NAME}  console=True
 
 
 
