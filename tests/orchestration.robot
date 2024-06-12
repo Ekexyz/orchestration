@@ -47,15 +47,14 @@ Orchestration
                 Pass Execution                          message=Next test not defined, restoring to initial state.
             END
         ELSE
-            # TBD.
-            Fail  msg=Last test run failed with status: ${status} and buildId: ${test_build}. Please check the issue and restore the yaml state.
+        # TBD.
+            Fail            msg=Last test run failed with status: ${status} and buildId: ${test_build}. Please check the issue and restore the yaml state.
         END
     ELSE
-
-        Log To Console      ${tests}
         ${test}=            Set Variable                ${tests}[0][name]
+        Log To Console      Running the first test: ${test}
     END
-    Log To Console          ${response}[data][status]
+
     # TODO: save and include suite level variables from previous run to the next
     ${test_parameter}=      Create Dictionary           key=--test                  type=clp                value=${test}
     ${input_parameters}=    Create List                 ${test_parameter}
