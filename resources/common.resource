@@ -4,7 +4,7 @@ Library    Collections
 Library    String
 Library    OperatingSystem
 Library    ../libraries/GitOperations.py
-Library    ../libraries/YamlEditor.py  filename=../files/orchestration.yaml
+Library    ../libraries/YamlEditor.py  filename=${CURDIR}/../files/orchestration.yaml
 Library    ../libraries/CRTApi.py  api_url=https://api.robotic.copado.com/pace/v4  access_token=${pat}
 
 
