@@ -18,3 +18,7 @@ settings:
   report_path: "./test_reports"
   log_level: "DEBUG"
 
+execute:
+    - name: ""
+    - status: ""
+    - build: ""
