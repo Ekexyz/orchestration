@@ -30,9 +30,11 @@ Orchestration
         ${response}=        Get Build Status            project_id=${project_id}    suite_id=${suite_id}    build_id=${test_build}
         ${status}=          Set Variable                ${response}[data][status]
         IF                  "${status}" == "executing"
-            Pass Execution                              message=Previous run still executing
+            Pass Execution                              message=Previous run is still executing
+        ELSE IF             "${status}" == "queued"
+            Pass Execution                              message=Previous run is still in the queue
         ELSE IF             "${status}" == "succeeded"
-            Log To Console                              Previous run completed successfully. Starting the next run.
+            Log To Console                              Previous run has completed successfully. Starting the next run.
             ${last_index}=                              Evaluate                    next((index for (index, d) in enumerate($tests) if d["name"] == "${test_name}"), None)
             ${next_index}=                              Evaluate                    ${last_index} +1
             TRY
