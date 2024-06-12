@@ -38,6 +38,8 @@ class YamlEditor:
             path (list): The path to the value to update (list of keys).
             value (any): The new value to set.
         """
+        logger.console(path)
+        logger.console(value)
         current_data = self.data
         for key in path[:-1]:
             current_data = current_data.setdefault(key, {})
