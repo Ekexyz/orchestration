@@ -18,9 +18,9 @@ class CRTApi:
         response.raise_for_status()  # Raises an HTTPError for bad responses
         return response.json()
 
-    def get_build_status(self, project_id, build_id):
+    def get_build_status(self, project_id, suite_id, build_id):
         """Retrieve the status of a build."""
-        url = f"{self.api_url}/projects/{project_id}/builds/{build_id}"
+        url = f"{self.api_url}/projects/{project_id}/jobs/{suite_id}/builds/{build_id}"
         response = requests.get(url, headers=self.headers)
         response.raise_for_status()
         return response.json()
