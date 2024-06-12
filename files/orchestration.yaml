@@ -19,6 +19,6 @@ settings:
   log_level: "DEBUG"
 
 execute:
-    - name: ""
-    - status: ""
-    - build: ""
+  name:
+  status:
+  build:
