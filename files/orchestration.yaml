@@ -1,7 +1,7 @@
 execute:
   build: 936018
-  name: null
-  status: null
+  name: Test1
+  status: executing
 settings:
   default_browser: chrome
   log_level: DEBUG
