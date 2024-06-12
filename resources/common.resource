@@ -21,8 +21,3 @@ Startup
     Set Suite Variable  ${project_id}
     Set Suite Variable  ${suite_id}
 
-
-
-Closure
-    [Documentation]  Teardown steps
-    # Markdown to YAML the statuses etc.
