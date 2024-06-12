@@ -24,7 +24,7 @@ class YamlEditor:
                 return None
         return current_data
 
-    def update_value(self, path, value):
+    def update_value(self, value, path):
         """Update value in the YAML data based on the path."""
         current_data = self.data
         for i, key in enumerate(path[:-1]):
