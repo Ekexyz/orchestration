@@ -19,17 +19,40 @@ Orchestration
     ${test_status}=         Get Value                   ${last_status}
     ${test_build}=          Get Value                   ${last_build}
 
-    IF                      ${test_name} is not None
+    # All defined tests 
+    ${tests}=           Create List                 tests
+    ${tests}=           Get Value                   ${tests}
+
+    # Run logic
+    IF                      "${test_name}" is not None
         Log To Console      Last test run was: ${test_name} with build_id: ${test_build}
         # Verify status of previous run
         ${response}=        Get Build Status  project_id=${project_id}    suite_id=${suite_id}  build_id=${test_build}
+        ${status}=          Set Variable  ${response}[data][status]
+        IF  "${status}" == "executing"
+            Pass Execution  message=Previous run still executing
+        ELSE IF  "${status}" == "succeeded"
+            Log To Console  Previous run completed successfully. Starting the next one.
+            ${last_index}=  Evaluate  next((index for (index, d) in enumerate($tests) if d["name"] == "${test_name}"), None)
+            ${next_index}=  Evaluate  ${last_index} +1
+            ${test}=        Set Variable  ${tests}[${next_index}][name]
+            IF  "${test}" is None
+                # Cleanup YAML
+                Update Value            path=${last_build}               value=${EMPTY}
+                Update Value            path=${last_run}                 value=${EMPTY}
+                Update Value            path=${last_status}              value=${EMPTY}
+                Save Yaml
+                Commit And Push         file_name=orchestration.yaml  git_branch=main
+                # Pass execution
+                Pass Execution  message=Next test not defined, restoring to initial state.
+            END
+        END
     ELSE
-        ${tests}=           Create List                 tests
-        ${tests}=           Get Value                   ${tests}
+
         Log To Console      ${tests}
         ${test}=            Set Variable                ${tests}[0][name]
     END
-
+    Log To Console  ${response}[data][status]
     # TODO: save and include suite level variables from previous run to the next
     ${test_parameter}=      Create Dictionary           key=--test                  type=clp                value=${test}
     ${input_parameters}=    Create List                 ${test_parameter}
