@@ -42,6 +42,9 @@ Orchestration
     ${status}=              Set Variable                ${response}[data][status]
 
     Update Value            path=${last_build}               value=${build_id}
+    Update Value            path=${last_run}                 value=${test}
+    Update Value            path=${last_status}              value=${status}
+
     Save Yaml
     Commit And Push         file_name=orchestration.yaml  git_branch=main
 
