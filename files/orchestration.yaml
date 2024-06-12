@@ -1,6 +1,6 @@
 execute:
-  build: 936317
-  name: Test1
+  build: 936335
+  name: Test2
   status: queued
 settings:
   default_browser: chrome
