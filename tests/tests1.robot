@@ -3,8 +3,6 @@ Library         QForce
 Suite Setup     OpenBrowser  about:blank  chrome
 Suite Teardown  CloseAllBrowsers
 
-
-
 *** Test Cases ***
 Test1
     [Documentation]
