@@ -1,7 +1,7 @@
 *** Settings ***
 Resource                    ../resources/common.resource
 Suite Setup                 Startup
-Suite Teardown              Closure
+
 
 *** Test Cases ***
 Orchestration
