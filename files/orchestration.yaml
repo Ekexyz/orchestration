@@ -1,0 +1,20 @@
+tests:
+  - name: "Test1"
+    script: "tests1.robot"
+    browser: "chrome"
+    environment: "uat"
+    variables:
+      url: "https://example.com"
+
+  - name: "Test2"
+    script: "tests1.robot"
+    browser: "chrome"
+    environment: "uat"
+    variables:
+      url: "https://example.com"
+
+settings:
+  default_browser: "chrome"
+  report_path: "./test_reports"
+  log_level: "DEBUG"
+
