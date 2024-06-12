@@ -32,12 +32,13 @@ Orchestration
         IF                  "${status}" == "executing"
             Pass Execution                              message=Previous run still executing
         ELSE IF             "${status}" == "succeeded"
-            Log To Console                              Previous run completed successfully. Starting the next one.
+            Log To Console                              Previous run completed successfully. Starting the next run.
             ${last_index}=                              Evaluate                    next((index for (index, d) in enumerate($tests) if d["name"] == "${test_name}"), None)
             ${next_index}=                              Evaluate                    ${last_index} +1
-            ${test}=        Set Variable                ${tests}[${next_index}][name]
-            IF              "${test}" is None
-            # Cleanup YAML
+            TRY
+                ${test}=        Set Variable                ${tests}[${next_index}][name]
+            EXCEPT
+                # Cleanup YAML
                 Update Value                            path=${last_build}          value=${EMPTY}
                 Update Value                            path=${last_run}            value=${EMPTY}
                 Update Value                            path=${last_status}         value=${EMPTY}
