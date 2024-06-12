@@ -1,7 +1,7 @@
 execute:
-  build: 936173
-  name: Test2
-  status: queued
+  build: ''
+  name: ''
+  status: ''
 settings:
   default_browser: chrome
   log_level: DEBUG
