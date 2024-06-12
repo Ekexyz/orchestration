@@ -1,4 +1,6 @@
 import requests
+from robot.api import logger
+from robot.api.deco import keyword
 
 class CRTApi:
     def __init__(self, api_url, access_token):
@@ -8,6 +10,7 @@ class CRTApi:
             'Content-Type': 'application/json'
         }
 
+    @keyword
     def start_test_run(self, project_id, suite_id, input_parameters=None):
         """Start a test run and return the response including status and buildId."""
         url = f"{self.api_url}/projects/{project_id}/jobs/{suite_id}/builds"
@@ -18,6 +21,7 @@ class CRTApi:
         response.raise_for_status()  # Raises an HTTPError for bad responses
         return response.json()
 
+    @keyword
     def get_build_status(self, project_id, suite_id, build_id):
         """Retrieve the status of a build."""
         url = f"{self.api_url}/projects/{project_id}/jobs/{suite_id}/builds/{build_id}"
