@@ -18,7 +18,8 @@ Startup
     # Read environment variables for project and suite
     ${project_id}=  Get Environment Variable  PROJECT_ID
     ${suite_id}=    Get Environment Variable  JOB_ID
-    Set Suite Variable  ${project_id}  ${suite_id}
+    Set Suite Variable  ${project_id}
+    Set Suite Variable  ${suite_id}
 
 
 
