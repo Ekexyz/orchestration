@@ -24,23 +24,15 @@ class YamlEditor:
                 return None
         return current_data
 
-    def update_value(self, value, path):
+    def update_value(self, path, value):
         """Update value in the YAML data based on the path."""
         current_data = self.data
         for i, key in enumerate(path[:-1]):
             if isinstance(current_data, dict):
                 current_data = current_data.setdefault(key, {})
-            elif isinstance(current_data, list) and isinstance(key, int) and key < len(current_data):
-                current_data = current_data[key]
             else:
-                # Handle the case where the path does not exist or is invalid
                 raise KeyError(f"Invalid path at {' -> '.join(map(str, path[:i+1]))}")
-        if isinstance(current_data, dict):
-            current_data[path[-1]] = value
-        elif isinstance(current_data, list) and isinstance(path[-1], int) and path[-1] < len(current_data):
-            current_data[path[-1]] = value
-        else:
-            raise KeyError("The last key in the path must index a valid location in a list or dictionary.")
+        current_data[path[-1]] = value
 
     def save_yaml(self):
         """Save the updated YAML data back to the file."""
