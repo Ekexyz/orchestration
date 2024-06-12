@@ -1,4 +1,6 @@
 import yaml
+from robot.api import logger
+from robot.api.deco import keyword
 
 class YamlEditor:
     def __init__(self, filename):
@@ -10,6 +12,7 @@ class YamlEditor:
         with open(self.filename, 'r') as file:
             return yaml.safe_load(file)
 
+    @keyword
     def get_value(self, path):
         """Retrieve a value from the YAML data based on the path.
         
@@ -27,6 +30,7 @@ class YamlEditor:
                 return None
         return current_data
 
+    @keyword
     def update_value(self, path, value):
         """Update value in the YAML data based on the path.
         
@@ -39,6 +43,7 @@ class YamlEditor:
             current_data = current_data.setdefault(key, {})
         current_data[path[-1]] = value
 
+    @keyword
     def save_yaml(self):
         """Save the updated YAML data back to the file."""
         with open(self.filename, 'w') as file:
