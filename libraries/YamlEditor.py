@@ -12,40 +12,36 @@ class YamlEditor:
         with open(self.filename, 'r') as file:
             return yaml.safe_load(file)
 
-    @keyword
     def get_value(self, path):
-        """Retrieve a value from the YAML data based on the path.
-        
-        Args:
-            path (list): The path to the value (list of keys).
-        
-        Returns:
-            The value from the specified path or None if the path is invalid.
-        """
+        """Retrieve a value from the YAML data based on the path."""
         current_data = self.data
         for key in path:
-            if key in current_data:
+            if isinstance(current_data, dict) and key in current_data:
+                current_data = current_data[key]
+            elif isinstance(current_data, list) and isinstance(key, int) and key < len(current_data):
                 current_data = current_data[key]
             else:
                 return None
         return current_data
 
-    @keyword
     def update_value(self, path, value):
-        """Update value in the YAML data based on the path.
-        
-        Args:
-            path (list): The path to the value to update (list of keys).
-            value (any): The new value to set.
-        """
-        logger.console(path)
-        logger.console(value)
+        """Update value in the YAML data based on the path."""
         current_data = self.data
-        for key in path[:-1]:
-            current_data = current_data.setdefault(key, {})
-        current_data[path[-1]] = value
+        for i, key in enumerate(path[:-1]):
+            if isinstance(current_data, dict):
+                current_data = current_data.setdefault(key, {})
+            elif isinstance(current_data, list) and isinstance(key, int) and key < len(current_data):
+                current_data = current_data[key]
+            else:
+                # Handle the case where the path does not exist or is invalid
+                raise KeyError(f"Invalid path at {' -> '.join(map(str, path[:i+1]))}")
+        if isinstance(current_data, dict):
+            current_data[path[-1]] = value
+        elif isinstance(current_data, list) and isinstance(path[-1], int) and path[-1] < len(current_data):
+            current_data[path[-1]] = value
+        else:
+            raise KeyError("The last key in the path must index a valid location in a list or dictionary.")
 
-    @keyword
     def save_yaml(self):
         """Save the updated YAML data back to the file."""
         with open(self.filename, 'w') as file:
