@@ -37,6 +37,11 @@ class YamlEditor:
         current_data[path[-1]] = value
 
     @keyword
+    def add_global_variable(self, key, value):
+        current_data = self.data
+        current_data.setdefault('global_variables', {}).update(dict(key=value))
+
+    @keyword
     def save_yaml(self):
         """Save the updated YAML data back to the file."""
         with open(self.filename, 'w') as file:

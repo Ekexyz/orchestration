@@ -23,3 +23,4 @@ tests:
   script: tests1.robot
   variables:
     url: https://example.com
+global_variables:
