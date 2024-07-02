@@ -2,6 +2,8 @@ execute:
   build: ''
   name: ''
   status: ''
+global_variables:
+  opportunity_id: '123456'
 settings:
   default_browser: chrome
   log_level: DEBUG
@@ -23,4 +25,3 @@ tests:
   script: tests1.robot
   variables:
     url: https://example.com
-global_variables:
