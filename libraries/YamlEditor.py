@@ -39,6 +39,8 @@ class YamlEditor:
     @keyword
     def add_global_variable(self, key, value):
         current_data = self.data
+        if current_data['global_variables'] is None:
+            current_data['global_variables'] = {}
         current_data.setdefault('global_variables', {}).update(dict(key=value))
 
     @keyword
