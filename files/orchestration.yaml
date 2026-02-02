@@ -4,24 +4,7 @@ execute:
   status: ''
 global_variables:
   opportunity_id: '123456'
-settings:
-  default_browser: chrome
-  log_level: DEBUG
-  report_path: ./test_reports
 tests:
-- browser: chrome
-  environment: uat
-  name: Test1
-  precondition:
-    keyword: my kw to check if we can proceed
-  script: tests1.robot
-  variables:
-    url: https://example.com
-- browser: chrome
-  environment: uat
-  name: Test2
-  precondition:
-    keyword: my kw to check if we can proceed
-  script: tests1.robot
-  variables:
-    url: https://example.com
+- name: Test1
+- name: Test2
+- name: Test3
