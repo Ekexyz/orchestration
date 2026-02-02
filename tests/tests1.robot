@@ -23,4 +23,15 @@ Test2
     Save Yaml
     #Commit And Push                         file_name=orchestration.yaml                        git_branch=main
     Sleep  5
+    Fail  msg=${TEST NAME} will fail here..
+
+
+Test3
+    [Documentation]
+    [Tags]
+    Log    Starting ${TEST NAME}  console=True
+    Add Global Variable  opportunity_id  654321
+    Save Yaml
+    #Commit And Push                         file_name=orchestration.yaml                        git_branch=main
+    Sleep  5
     Pass Execution  message=${TEST NAME} finished
