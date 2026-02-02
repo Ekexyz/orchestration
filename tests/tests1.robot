@@ -6,8 +6,8 @@ Suite Teardown  CloseAllBrowsers
 
 *** Test Cases ***
 Test1
-    [Documentation]
-    [Tags]
+    [Documentation]  passing test case
+    [Tags]           test1
     Log    Starting ${TEST NAME}  console=True
     Add Global Variable  key=opportunity_id  value=123456
     Save Yaml
@@ -16,8 +16,8 @@ Test1
     Pass Execution  message=${TEST NAME} finished
 
 Test2
-    [Documentation]
-    [Tags]
+    [Documentation]  failing test case, will simulate waiting for a status to be correct
+    [Tags]           test2
     Log    Starting ${TEST NAME}  console=True
     Add Global Variable  opportunity_id  654321
     Save Yaml
@@ -27,8 +27,8 @@ Test2
 
 
 Test3
-    [Documentation]
-    [Tags]
+    [Documentation]  passing test case
+    [Tags]           test3
     Log    Starting ${TEST NAME}  console=True
     Add Global Variable  opportunity_id  112233
     Save Yaml
