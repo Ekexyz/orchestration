@@ -15,7 +15,7 @@ ${pat}                  ${EMPTY}
 *** Keywords ***
 Startup
     [Documentation]  Startup steps
-    # Read environment variables for project and suite
+    # Read environment variables for project and suite or set manually!
     ${project_id}=  Get Environment Variable  PROJECT_ID
     ${suite_id}=    Get Environment Variable  JOB_ID
     Set Suite Variable  ${project_id}
