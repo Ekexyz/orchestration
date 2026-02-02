@@ -30,7 +30,7 @@ Test3
     [Documentation]
     [Tags]
     Log    Starting ${TEST NAME}  console=True
-    Add Global Variable  opportunity_id  654321
+    Add Global Variable  opportunity_id  112233
     Save Yaml
     #Commit And Push                         file_name=orchestration.yaml                        git_branch=main
     Sleep  5
