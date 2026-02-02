@@ -49,9 +49,10 @@ Orchestration
                 # Pass execution
                 Pass Execution                          message=Next test not defined, restoring to initial state.
             END
-        ELSE
-        # TBD.
-            Fail            msg=Last test run failed with status: ${status} and buildId: ${test_build}. Please check the issue and restore the yaml state.
+        ELSE IF             "${status}" == "failed"
+            # Re-run the previous test.
+            ${test}=            Set Variable   ${test_name}
+            Log To Console      Last test run failed with status: ${status} and buildId: ${test_build}. Re-running the test.
         END
     ELSE
         ${test}=            Set Variable                ${tests}[0][name]
