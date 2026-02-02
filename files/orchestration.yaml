@@ -3,7 +3,7 @@ execute:
   name: Test2
   status: queued
 global_variables:
-  opportunity_id: '123456'
+  opportunity_id: '654321'
 tests:
 - name: Test1
 - name: Test2
