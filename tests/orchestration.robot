@@ -6,7 +6,7 @@ Suite Setup                 Startup
 *** Test Cases ***
 Orchestration
     [Documentation]         Read/Write YAML and proceed with test execution as defined.
-    [Tags]                  ORCHESTRATE
+    [Tags]                  test-runner
 
 
     # Create paths for previous build information in YAML
