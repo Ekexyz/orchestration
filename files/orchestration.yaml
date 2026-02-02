@@ -1,7 +1,7 @@
 execute:
-  build: ''
-  name: ''
-  status: ''
+  build: 4064574
+  name: Test1
+  status: queued
 global_variables:
   opportunity_id: '123456'
 tests:
